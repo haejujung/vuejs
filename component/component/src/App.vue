@@ -1,49 +1,16 @@
 <script>
-  import FirstChild from '@/components/FirstChild.vue';
-export default{
-  components: {
-    FirstChild,
-  },
-  data(){
-    return {
-      visible: true,
-    };
-  },
-  beforeCreate(){
-    console.log('beforeCreat');
-  },
-  created(){
-    setTimeout(() => {
-      this.visible = false;
-    }, 3000);
-    console.log('created');
-  },
-  beforeMount(){
-    console.log('beforeMount');
-  },
-  mounted(){
-    console.log('mounted');
-  },
-  beforeUpdate(){
-    console.log('beforeupdate');
-  },
-  updated(){
-    console.log('updated');
-  },
-  beforeUnmount(){
-    console.log('beforeUnmount');
-  },
-  unmounted(){
-    console.log('unmounted');
-  },
-}
+  import UserProfile from '@/components/UserProfile.vue';
+  export default {
+    components: {
+      UserProfile,
+    },
+    data(){
+      return{
+        userName: '정해주',
+      };
+    },
+  }
 </script>
 <template>
-  <FirstChild v-if="visible" />
+  <UserProfile :name="userName"/>
 </template>
-<style scoped>
-  h1,
-  p {
-    color: orange !important;
-  }
-</style> 

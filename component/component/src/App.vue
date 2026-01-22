@@ -1,16 +1,12 @@
 <script>
-  import UserProfile from '@/components/UserProfile.vue';
+  import CustomButton from '@/components/CustomButton.vue';
+import UserProfile from '@/components/CustomButton.vue';
   export default {
     components: {
-      UserProfile,
-    },
-    data(){
-      return{
-        userName: '정해주',
-      };
+      CustomButton,
     },
   }
 </script>
 <template>
-  <UserProfile :name="userName"/>
+  <CustomButton>더블클릭</CustomButton>
 </template>

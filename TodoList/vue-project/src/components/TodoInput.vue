@@ -8,9 +8,8 @@
         emits: ["addTodo"],
         methods: {
             addTodo(){
-                console.log(this.inputMsg);
                 this.$emit('addTodo', this.inputMsg);
-                this.inputMsg = "";
+                this.inputMsg = '';
             },
         },
     }

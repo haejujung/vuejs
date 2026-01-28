@@ -11,6 +11,15 @@ import TodoList from './components/TodoList.vue';
           current: 'all',
         };
       },
+      computed: {
+        computedTodo(){
+          if(this.current === 'all'){
+            return this.todo;
+          } else {
+            return this.todo.filter((v) => v.completed);
+          }
+        },
+      },
       methods:{
         addTodo(inputMsg){
           const item = {
@@ -20,14 +29,26 @@ import TodoList from './components/TodoList.vue';
           };
           this.todo.push(item);
         },
+        updateTab(tab){
+          this.current = tab;
+        },
+        deleteTodo(id){
+          this.todo = this.todo.filter((v) => v.id !== id);
+        },
+        updateTodo(id){
+          this.todo = this.todo.map((v) =>
+        v.id === id ? { ...v, completed: !v.completed} : v);
+        }
       },
     }
   }
 </script>
 <template>
   <div class="todo">
-    <TodoHeader :current="current"/>
-    <TodoList />
+    <TodoHeader :current="current" @update-tab="updateTab"/>
+    <TodoList :computed-todo="coputedTodo"
+    @delete-todo="deleteTodo"
+    @update-todo="updateTodo" />
     <TodoInput @add-todo="addTodo" />
   </div>
 </template>
